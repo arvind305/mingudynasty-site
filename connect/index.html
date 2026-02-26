@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Arvind Sridharan | Business Systems and AI Implementation</title>
+  <meta name="description" content="I help founder-led businesses put simple, working systems in place. I understand the workflow, design the structure, and build the tool." />
+
+  <style>
+    :root{
+      --bg:#f6f6f4;
+      --card:#ffffff;
+      --ink:#141414;
+      --muted:#5c5c5c;
+      --line:rgba(0,0,0,.08);
+      --shadow:0 12px 34px rgba(0,0,0,.06);
+      --radius:18px;
+      --max:920px;
+
+      /* Accent (subtle but visible) */
+      --accent:#1f5eff;
+      --accentSoft:rgba(31,94,255,.10);
+      --accentSofter:rgba(31,94,255,.06);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(900px 500px at 10% 0%, rgba(0,0,0,.06), transparent 60%),
+        radial-gradient(700px 420px at 90% 10%, rgba(0,0,0,.05), transparent 55%),
+        var(--bg);
+      color:var(--ink);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 16px 56px;}
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.92);
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    /* small top accent bar */
+    .card::before{
+      content:"";
+      position:absolute; top:0; left:0; right:0;
+      height:4px;
+      background:linear-gradient(90deg, var(--accent), rgba(31,94,255,.25));
+    }
+
+    /* Header */
+    .hero{padding:22px 18px 14px;}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.7);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:var(--accent);
+      box-shadow: 0 0 0 5px var(--accentSoft);
+    }
+
+    h1{margin:12px 0 6px; font-size:24px; letter-spacing:-0.02em;}
+    .role{margin:0; color:var(--muted); line-height:1.5; font-size:14px;}
+    .role strong{color:var(--ink)}
+    .divider{height:1px; background:var(--line); margin:16px 0 0;}
+
+    /* Icons (simple line icons, no emojis) */
+    .ico{width:16px; height:16px; display:inline-block; flex:0 0 auto}
+    .ico svg{width:16px; height:16px}
+    .ico svg path, .ico svg rect, .ico svg line, .ico svg polyline, .ico svg circle{
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* CTAs */
+    .cta{
+      display:flex; flex-wrap:wrap;
+      gap:10px;
+      padding:14px 18px 18px;
+      align-items:center;
+    }
+    .btnwrap{display:flex; gap:10px; flex-wrap:wrap;}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      border-color: rgba(31,94,255,.45);
+      box-shadow: 0 6px 18px rgba(31,94,255,.12);
+      transform: translateY(-1px);
+      transition:.15s ease;
+    }
+    .btn.secondary{
+      background:rgba(255,255,255,.65);
+    }
+
+    /* Content */
+    .content{padding:0 18px 20px;}
+    .section{margin-top:18px;}
+    .section h2{
+      margin:0 0 10px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted);
+      display:flex; align-items:center; gap:10px;
+    }
+    .section h2::after{
+      content:"";
+      height:1px;
+      background:var(--line);
+      flex:1;
+    }
+
+    /* What I do */
+    .what{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+    @media (min-width:720px){ .what{grid-template-columns: 1fr 1fr 1fr;} }
+
+    .tile{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:16px;
+      padding:14px;
+      min-height:94px;
+      position:relative;
+      overflow:hidden;
+    }
+    /* subtle accent edge + tint */
+    .tile::before{
+      content:"";
+      position:absolute; left:0; top:0; bottom:0;
+      width:4px;
+      background:var(--accent);
+      opacity:.55;
+    }
+    .tile::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(120deg, var(--accentSofter), transparent 55%);
+      opacity:.6;
+      pointer-events:none;
+    }
+    .tile > *{position:relative;}
+    .tile .t{font-weight:800; font-size:14px; margin-bottom:6px;}
+    .tile .d{color:var(--muted); font-size:13px; line-height:1.45;}
+
+    /* Apps */
+    .apps{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+    @media (min-width:720px){ .apps{grid-template-columns: 1fr 1fr 1fr;} }
+
+    .app{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:16px;
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height:156px;
+    }
+    .appTop{display:flex; gap:10px; align-items:center;}
+    .logo{
+      width:38px; height:38px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .logo img{width:100%; height:100%; object-fit:contain; padding:6px;}
+    .app h3{margin:0; font-size:14px; letter-spacing:-.01em;}
+    .app .url{font-size:12px; color:var(--muted);}
+    .app p{margin:0; color:var(--muted); font-size:13px; line-height:1.45;}
+    .go{
+      margin-top:auto;
+      display:inline-flex;
+      align-items:center;
+      font-weight:800;
+      text-decoration:none;
+      border-bottom:1px solid rgba(31,94,255,.55);
+      width:max-content;
+      font-size:13px;
+      padding-bottom:2px;
+    }
+    .go:hover{border-bottom-color: rgba(31,94,255,.9);}
+
+    /* Footer */
+    footer{
+      padding:14px 18px 18px;
+      color:var(--muted);
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      border-top:1px solid var(--line);
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="hero">
+        <div class="chip"><span class="dot"></span> Founder-led businesses</div>
+
+        <h1>Arvind Sridharan</h1>
+        <p class="role">
+          <strong>Business Systems and AI Implementation.</strong>
+          I help founders put simple, working systems in place.
+          I understand the workflow, design the structure, and build the tool.
+        </p>
+
+        <div class="divider"></div>
+      </div>
+
+      <div class="cta">
+        <div class="btnwrap">
+          <a class="btn" href="tel:+919008444677">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.5 2.1L8 9.4a16 16 0 0 0 6.6 6.6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.4.6a2 2 0 0 1 1.7 2z"/></svg>
+            </span>
+            Call
+          </a>
+
+          <a class="btn" href="mailto:arvind305@gmail.com?subject=Connect%20-%20Business%20Systems%20and%20AI%20Implementation">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+            </span>
+            Email
+          </a>
+
+          <a class="btn secondary" href="arvind-sridharan.vcf">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            Save contact
+          </a>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="section">
+          <h2>What I do</h2>
+          <div class="what">
+            <div class="tile">
+              <div class="t">Diagnose</div>
+              <div class="d">I map how work really happens, find bottlenecks, and make the problem clear.</div>
+            </div>
+            <div class="tile">
+              <div class="t">Design</div>
+              <div class="d">I define roles, workflows, and rules that make the business easier to run.</div>
+            </div>
+            <div class="tile">
+              <div class="t">Build and deploy</div>
+              <div class="d">I ship the working app or internal tool, then iterate based on real usage.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Apps</h2>
+          <div class="apps">
+            <div class="app">
+              <div class="appTop">
+                <div class="logo">
+                  <img src="assets/rubic.jpg" alt="Rubic logo">
+                </div>
+                <div>
+                  <h3>Rubic</h3>
+                  <div class="url">www.rubicwealth.com</div>
+                </div>
+              </div>
+              <p>Financial planning with an AI advisor to explore scenarios and decisions.</p>
+              <a class="go" href="https://www.rubicwealth.com" target="_blank" rel="noreferrer">Open</a>
+            </div>
+
+            <div class="app">
+              <div class="appTop">
+                <div class="logo">
+                  <img src="assets/coolscool.png" alt="CoolScool logo">
+                </div>
+                <div>
+                  <h3>CoolScool</h3>
+                  <div class="url">www.coolscool.in</div>
+                </div>
+              </div>
+              <p>Practice-led learning that helps students improve without pressure.</p>
+              <a class="go" href="https://coolscool.in" target="_blank" rel="noreferrer">Open</a>
+            </div>
+
+            <div class="app">
+              <div class="appTop">
+                <div class="logo">
+                  <img src="assets/superselector.svg" alt="SuperSelector logo">
+                </div>
+                <div>
+                  <h3>SuperSelector</h3>
+                  <div class="url">www.superselector.in</div>
+                </div>
+              </div>
+              <p>Predictions and gaming built for engagement and repeat usage.</p>
+              <a class="go" href="https://superselector.in" target="_blank" rel="noreferrer">Open</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>© <span id="year"></span> Arvind Sridharan</div>
+        <div>Business Systems and AI Implementation</div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
